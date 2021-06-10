@@ -13,9 +13,9 @@
 			(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
 			(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
 			(document.msFullscreenElement && document.msFullscreenElement !== null);
-			
+
 			var element = document.body.getElementsByClassName("webgl-content")[0];
-			
+
 			if (!isInFullScreen) {
 				document.getElementById("fullScreenButton").style.backgroundImage="url('TemplateData/img/fullScreen_off.png')";
 				return (element.requestFullscreen ||
@@ -36,7 +36,7 @@
 				}
 			}
 		}
-		
+
 		function CheckCompatibility(gameInstance, onsuccess, onerror)
 		{
 			if (!UnityLoader.SystemInfo.hasWebGL) {
@@ -52,53 +52,53 @@
 				onsuccess();
 			}
 		}
-		
+
 		function RuntimeInitialized(){
 		}
-		
+
 		function UnityProgress(gameInstance, progress) {
 			if (!gameInstance.Module)
 			return;
-			document.getElementById("loadingBlock").style.display = "inherit";	 	
+			document.getElementById("loadingBlock").style.display = "inherit";
 			document.getElementById("fullBar").style.width = (100 * progress) + "%";
 			document.getElementById("emptyBar").style.width = (100 * (1 - progress)) + "%";
 			if (progress == 1)
 			{
 				setTimeout(function(){ document.getElementById("loadingBlock").style.display = "none"; }, 3000);
-			}	
+			}
 		}
-		
+
 		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/test3.json", {
 			onProgress: UnityProgress,
 			compatibilityCheck:CheckCompatibility,
 			Module: {
 				//TOTAL_MEMORY: 268435456,
 				onRuntimeInitialized:RuntimeInitialized,
-			},		
+			},
 		});
     </script>
 
-		
+
 	</style>
   </head>
   <body>
-  
+
 	  <div class="container">
 		  <div class="spinner"><i class="fas fa-spinner fa-10x"></i></div>
 	  </div>
     <div class="keepRatio">
-  
+
 		<div class="webgl-content">
 			<button id="fullScreenButton" onclick="ToggleFullScreen()"></button>
 			<div id="gameContainer"></div>
 		</div>
-		
-		
+
+
 		<div id="loadingBlock">
 			<img class="logo" src="TemplateData/img/Logo.png"></img>
 			<span class="subtitle">  <br>
 			</span>
-			
+
 			<div id="progressBar">
 				<div>LOADING ...</div>
 				<div class="centered">
@@ -106,7 +106,7 @@
 					<div id="fullBar"></div>
 				</div>
 			</div>
-			
+
 			<div id="warningBrowserBlock" style="display:none;">
 				<div class="warningBrowserText">
 					Your browser may not be compatible with this website. For an optimal experience, we suggest you to download one of this popular web browsers.
@@ -119,18 +119,18 @@
 			</div>
 			<div id="warningMobileBlock" style="display:none;">
 				<div class="warningBrowserText">
-					
+
 				</div>
 			</div>
-			
+
 		</div>
-		
+
 		<div id="errorBrowserBlock" style="display:none;">
 			<img class="logo" src="TemplateData/img/Logo.png"></img>
 			<span class="subtitle"> CATCHPHRASE <br>
-			
+
 			</span>
-			
+
 			<div id="errorContent">
 				<div id="errorBrowserText">
 					Your browser does not support WebGL. <br> You can download one of this popular web browsers.
@@ -142,8 +142,8 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
-	
+
   </body>
 </html>
